@@ -8,3 +8,14 @@ services:
       - POSTGRES_USER=odoo
     ports:
       - "5432:5432"
+    volumes:
+      - dam22_postgres:/var/lib/postgresql/data
+  odoo:
+    image: odoo:14.0
+    container_name: dam22_odoo
+    ports:
+      - "8069:8069"
+    depends_on:
+      - db
+volumes:
+  dam22_postgres:
